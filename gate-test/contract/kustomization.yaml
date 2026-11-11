@@ -1,0 +1,20 @@
+# Copies both repos' declared values into the gate Job's environment (cross-repo render, Phase 1 step 1.5)
+apiVersion: kustomize.config.k8s.io/v1alpha1
+kind: Component
+replacements:
+- source: {kind: ConfigMap, name: app-identity, fieldPath: data.eaId}
+  targets:
+  - select: {kind: Job, name: gate}
+    fieldPaths: ["spec.template.spec.containers.[name=gate].env.[name=APP_EA_ID].value"]
+- source: {kind: ConfigMap, name: app-identity, fieldPath: data.customBlockVersion}
+  targets:
+  - select: {kind: Job, name: gate}
+    fieldPaths: ["spec.template.spec.containers.[name=gate].env.[name=APP_CUSTOM_BLOCK_VERSION].value"]
+- source: {kind: ConfigMap, name: infra-identity, fieldPath: data.eaId}
+  targets:
+  - select: {kind: Job, name: gate}
+    fieldPaths: ["spec.template.spec.containers.[name=gate].env.[name=INFRA_EA_ID].value"]
+- source: {kind: ConfigMap, name: infra-identity, fieldPath: data.customBlockVersion}
+  targets:
+  - select: {kind: Job, name: gate}
+    fieldPaths: ["spec.template.spec.containers.[name=gate].env.[name=INFRA_CUSTOM_BLOCK_VERSION].value"]

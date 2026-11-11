@@ -1,0 +1,7 @@
+# What the app team declares; the contract check compares it with infra's infra-identity
+apiVersion: v1
+kind: ConfigMap
+metadata: {name: app-identity}
+data:
+  eaId: EA-9999
+  customBlockVersion: v1
