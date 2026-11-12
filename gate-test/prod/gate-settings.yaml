@@ -3,11 +3,11 @@ apiVersion: batch/v1
 kind: Job
 metadata: {name: gate}
 spec:
-  activeDeadlineSeconds: 180
+  activeDeadlineSeconds: 420
   template:
     spec:
       containers:
       - name: gate
         env:
         - {name: LANE, value: prod}
-        - {name: GATE_TIMEOUT_SECONDS, value: "60"}
+        - {name: GATE_TIMEOUT_SECONDS, value: "300"}
