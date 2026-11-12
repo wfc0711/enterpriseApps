@@ -1,7 +1,9 @@
-# What the app team declares; the contract check compares it with infra's infra-identity
+# What the app team declares; the contract check compares it with infra's infra-identity.
+# releaseId is set per lane (release.yaml); the gate compares it with gate-state (ADR-08)
 apiVersion: v1
 kind: ConfigMap
 metadata: {name: app-identity}
 data:
+  app: gate-test
   eaId: EA-9999
   customBlockVersion: v1

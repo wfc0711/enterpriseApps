@@ -1,13 +1,16 @@
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
+# Namespace gate-test-dev is created by ArgoCD (CreateNamespace with labels from the Application; plan step 1.9, D3)
 namespace: gate-test-dev
 resources:
-- namespace.yaml
 - ../base
-# Infra block from the infra repo at a tag (remote base)
-- https://github.com/wfc0711/infra//appCustomizedInfra/gate-test?ref=spike-gatetest-1
+# Infra block and the gate from the infra repo at a tag (remote base)
+- https://github.com/wfc0711/infra//appCustomizedInfra/gate-test?ref=gate-v1
+patches:
+- path: gate-settings.yaml
 components:
-- ../contract
+- release        # releaseId first ...
+- ../contract    # ... then copied into the gate Job
 labels:
 - pairs: {mycompany.jp/ea-id: EA-9999, mycompany.jp/env: dev}
   includeTemplates: true
