@@ -3,4 +3,4 @@ apiVersion: v1
 kind: ConfigMap
 metadata: {name: app-identity}
 data:
-  releaseId: r1
+  releaseId: r2
