@@ -7,3 +7,4 @@ data:
   app: gate-test
   eaId: EA-9999
   customBlockVersion: v1
+  gateRef: gate-v2     # the gate version this app declares; equals the ?ref= of the lane remote base (step 1.10)
