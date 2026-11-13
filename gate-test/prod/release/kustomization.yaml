@@ -1,6 +1,0 @@
-# The release of this lane, as a component listed before ../contract: components run in the order listed, so the
-# contract component's replacements see this releaseId (a plain patch would be applied after them)
-apiVersion: kustomize.config.k8s.io/v1alpha1
-kind: Component
-patches:
-- path: release.yaml

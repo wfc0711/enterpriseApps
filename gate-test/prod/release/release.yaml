@@ -1,6 +1,0 @@
-# The release of this lane; changing it is a change the gate decides on (ADR-08)
-apiVersion: v1
-kind: ConfigMap
-metadata: {name: app-identity}
-data:
-  releaseId: r3
