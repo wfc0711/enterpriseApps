@@ -4,6 +4,7 @@ kind: Kustomization
 namespace: gate-test-prod
 resources:
 - ../base
+- ../identity     # app-identity (temporary, Phase 1c v2.2; removed at push 1c-E)
 # Infra block and the gate from the infra repo at a tag (remote base)
 - https://github.com/wfc0711/infra//appCustomizedInfra/gate-test?ref=gate-v2
 patches:

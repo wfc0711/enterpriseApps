@@ -1,0 +1,14 @@
+# infraManifest of this environment: what the app team declares. Interim PoC shape (Phase 1c, D1c-1): a ConfigMap, so
+# that ArgoCD renders and compares it; not the final schema. Values lower case (D1c-3).
+# releaseId: changing it is a change the gate decides on (ADR-08). gateRef: equals the ?ref= of the remote base in
+# kustomization.yaml. The contract check compares eaId and customBlockVersion with infra's infra-identity.
+apiVersion: v1
+kind: ConfigMap
+metadata: {name: infra-manifest}
+data:
+  app: gate-test
+  eaId: EA-9999
+  environment: prod
+  releaseId: r3
+  customBlockVersion: v2
+  gateRef: gate-v2

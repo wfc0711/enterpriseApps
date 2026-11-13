@@ -1,0 +1,17 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+# Phase 1c layout environments/<ENV>: the folder name (PROD) is never used as a value; every value is lower case (D1c-3)
+# Namespace gate-test-prod is created by ArgoCD (CreateNamespace with labels from the Application; plan step 1.9, D3)
+namespace: gate-test-prod
+resources:
+- ../../base
+- infraManifest.yaml
+# Infra block and the gate from the infra repo at a tag (remote base); gateRef in infraManifest.yaml equals this ?ref=
+- https://github.com/wfc0711/infra//appCustomizedInfra/gate-test?ref=gate-v2
+patches:
+- path: gate-settings.yaml
+components:
+- ../../components/contract    # copies infra-manifest's and infra-identity's values into the gate Job
+labels:
+- pairs: {mycompany.jp/ea-id: EA-9999, mycompany.jp/env: prod}
+  includeTemplates: true

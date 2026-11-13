@@ -1,0 +1,6 @@
+# Temporary (Phase 1c, correction v2.2): the old lanes' app-identity, moved out of ../base so that base holds the
+# workload only. Referenced only by ../dev and ../prod; removed with them at push 1c-E
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+resources:
+- app-identity.yaml
