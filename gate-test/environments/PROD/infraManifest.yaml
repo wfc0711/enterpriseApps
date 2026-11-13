@@ -10,5 +10,5 @@ data:
   eaId: EA-9999
   environment: prod
   releaseId: r3
-  customBlockVersion: v2
+  customBlockVersion: v1
   gateRef: gate-v2
